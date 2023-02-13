@@ -166,6 +166,11 @@ WALL_HEIGHT = 30
 FOOT_VOLUME = 195
 VOLUME_PRICE = 1900
 
+# Mode of History.build
 IS_MULTI_THREADED = os.environ.get("IS_MULTI_THREADED") or False
+
+# How many workers are building if IS_MULTI_THREADED
 THREADS_NUMBER = os.environ.get("THREADS_NUMBER") or 4
+
+# File with initial wall profiles
 WALL_FILE = os.environ.get("WALL_FILE") or BASE_DIR / "data.txt"
