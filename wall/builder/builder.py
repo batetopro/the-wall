@@ -94,6 +94,10 @@ class History:
 
 
 class HistoryBuilder:
+    """
+    Abstract builder of History.profiles
+    """
+
     @classmethod
     def read_data(cls, path=None) -> dict:
         """
@@ -186,6 +190,10 @@ class HistoryBuilder:
 
 
 class SimpleHistoryBuilder(HistoryBuilder):
+    """
+    Builder of History.profiles, which builds all profiles at once oer day.
+    """
+
     def __init__(self):
         super().__init__()
         self._amount_added = 0
@@ -226,6 +234,9 @@ class SimpleHistoryBuilder(HistoryBuilder):
 
 
 class MultiThreadedHistoryBuilder(HistoryBuilder):
+    """
+    Builder of History.profiles, which uses workers to build profiles.
+    """
     def _prepare_locks(self, data) -> None:
         """
         Prepare History.profiles locks.
@@ -333,6 +344,9 @@ class MultiThreadedHistoryBuilder(HistoryBuilder):
 
 
 class BuilderThread(threading.Thread):
+    """
+    Workers of MultiThreadedHistoryBuilder - build one profile section.
+    """
     @property
     def idx(self) -> int:
         """
