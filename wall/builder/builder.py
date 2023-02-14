@@ -320,6 +320,8 @@ class MultiThreadedHistoryBuilder(HistoryBuilder):
 
         for idx in range(1, settings.THREADS_NUMBER + 1):
             self.schedule[idx] = self.get_next_partition()
+            if self.schedule[idx] is None:
+                LOGGER.info("Build worker {} is ready.".format(idx))
 
         while not self.is_ready():
             for idx in range(1,  settings.THREADS_NUMBER + 1):
