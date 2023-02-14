@@ -289,10 +289,10 @@ class MultiThreadedHistoryBuilder(HistoryBuilder):
         """
         return self._barrier
 
-    def is_ready(self) -> int:
+    def is_ready(self) -> bool:
         """
         Get ready when there are no active workers
-        :return: int
+        :return: bool
         """
         return self.active_workers == 0
 
